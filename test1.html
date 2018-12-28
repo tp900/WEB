@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+           body{
+			   background-color: #BBBBBB;
+			   
+		   }
+		   #main{
+			   width: 100%;
+			   height: 100%;
+		   }
+		   .xue{
+			   color: #fff;
+			   position: absolute;			   		   
+			   transition: all 20s linear;
+		   }
+		</style>
+		<script src="jquery-1.10.2.js"></script>
+	</head>
+	<body>
+		
+		
+	<script>
+		$(document).ready(function(){			
+			var h = window.innerHeight;
+			var w = window.innerWidth;			
+			var p = 1;
+			var pp = 1;
+			AddDiv();
+			function AddDiv(){
+				for(var i = 0;i<20;i++){
+					var r = Math.random();
+					var r2 = Math.random();
+					var t = -parseInt(r *10*r2*100)
+					var s = parseInt(r * 10 *r2*10);
+					var l = parseInt(r * w);
+					var div = '<div p="'+p+'" style="color: #fff;left:'+l+'px;top:'+t+'px;font-size: '+s+'px;" class="xue">❄</div>';
+					$('body').append(div);
+				}
+				setTimeout(function(){
+					$('.xue').each(function(){
+						//alert(1)
+						$(this).css('top',h+'px');	
+						$(this).css('transform', 'rotate(360deg)')				
+					})
+				},500)				
+				if(p>=21){
+					$('[p='+pp+']').remove();
+					pp++;
+				}
+				p++;
+			}
+			setInterval(function(){
+				AddDiv();
+			},2000);
+			
+		});
+	</script>
+	
+
+
+
+	</body>
+</html>
